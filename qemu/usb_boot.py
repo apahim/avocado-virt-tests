@@ -45,6 +45,7 @@ class USBBootTest(test.VirtTest):
         usb_device_cmdline = self.params.get('device_cmdline',
                                              default='-device usb-tablet,id=usb-tablet,bus=usbtest.0,port=1')
         self.vm.devices.add_cmdline(usb_device_cmdline)
+        self.vm.devices.add_cmdline('--enable-kvm')
         self.vm.power_on()
         self.vm.login_remote()
         self.vm.remote.run('dmesg -c')

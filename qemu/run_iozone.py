@@ -28,6 +28,7 @@ class RunIOZoneTest(test.VirtTest):
     """
 
     def test_iozone(self):
+        self.vm.devices.add_cmdline('--enable-kvm')
         self.vm.power_on()
         self.vm.login_remote()
         self.whiteboard = self.vm.remote.run('iozone -a').stdout

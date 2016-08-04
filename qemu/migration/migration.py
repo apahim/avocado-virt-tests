@@ -28,6 +28,7 @@ class MigrationTest(test.VirtTest):
     """
 
     def test_migrate(self):
+        self.vm.devices.add_cmdline('--enable-kvm')
         self.vm.power_on()
         migration_mode = self.params.get('migration_mode', default='tcp')
         for _ in xrange(self.params.get('migration_iterations', default=4)):

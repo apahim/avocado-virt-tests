@@ -26,6 +26,7 @@ class BootTest(test.VirtTest):
     """
 
     def test_boot(self):
+        self.tevm.devices.add_cmdline('--enable-kvm')
         self.vm.power_on()
         self.vm.login_remote()
 
